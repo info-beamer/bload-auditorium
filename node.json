@@ -1,5 +1,5 @@
 {
-    "name": "BLOAD Auditorium",
+    "name": "Player settings",
     "permissions": {
         "network": "Runs ftp server"
     },
