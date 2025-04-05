@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      hr {
+        margin: 0 0 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='row'>
+      <div class='col-md-3'>
+        <select id='rotation' class="form-control">
+          <option value="0">
+            Unrotated output
+          </option>
+          <option value="90">
+            Clockwise 90° rotation
+          </option>
+          <option value="180">
+            Clockwise 180° rotation
+          </option>
+          <option value="270">
+            Clockwise 270° rotation
+          </option>
+        </select>
+      </div>
+      <div class='col-md-3'>
+        <select id='screen' class="form-control">
+          <option value="1">Auditorium 1</option>
+          <option value="2">Auditorium 2</option>
+          <option value="3">Auditorium 3</option>
+          <option value="4">Auditorium 4</option>
+          <option value="5">Auditorium 5</option>
+          <option value="6">Auditorium 6</option>
+          <option value="7">Auditorium 7</option>
+          <option value="8">Auditorium 8</option>
+          <option value="9">Auditorium 9</option>
+          <option value="10">Auditorium 10</option>
+          <option value="11">Auditorium 11</option>
+          <option value="12">Auditorium 12</option>
+          <option value="13">Auditorium 13</option>
+          <option value="14">Auditorium 14</option>
+          <option value="15">Auditorium 15</option>
+          <option value="16">Auditorium 16</option>
+        </select>
+      </div>
+      <div class='col-md-3'>
+        <select id='blank' class="form-control">
+          <option value="false">
+            Don't blank screen
+          </option>
+          <option value="true">
+            Blank on idle
+          </option>
+        </select>
+      </div>
+      <div class='col-md-3'>
+        <button id='save' class='btn btn-primary btn-block'>Save screen setting</button>
+      </div>
+    </div>
+    <br/>
+
+    <!-- Provides the interface to info-beamer hosted -->
+    <script src="hosted.js"></script>
+
+    <script>
+      'use strict';
+      let e_r = document.getElementById('rotation'),
+          e_s = document.getElementById('screen'),
+          e_b = document.getElementById('blank'),
+          e_save = document.getElementById('save')
+
+      ib.ready.then(async () => {
+        ib.setDefaultStyle()
+        let dd = await ib.device_data()
+        e_r.value = dd.rotation == undefined ? 0 : dd.rotation
+        e_s.value = dd.screen == undefined ? 1 : dd.screen
+        e_b.value = dd.blank == undefined ? false : dd.blank
+        e_save.addEventListener('click', async () => {
+          try {
+            await ib.device_data({
+              rotation: JSON.parse(e_r.value),
+              screen: JSON.parse(e_s.value),
+              blank: JSON.parse(e_b.value),
+            })
+            ib.notification.success("Saved. Changes will be applied to the device now.")
+          } catch (e) {
+            ib.notification.error(`Cannot set device data: ${e}`)
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
+

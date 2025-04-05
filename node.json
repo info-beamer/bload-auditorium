@@ -1,0 +1,77 @@
+{
+    "name": "BLOAD Auditorium",
+    "permissions": {
+        "network": "Runs ftp server"
+    },
+    "control_ui": "control.html",
+    "options": [{
+        "title": "Movies",
+        "doc_link": true,
+        "name": "movies_section",
+        "type": "section"
+    }, {
+        "title": "Add all movies you want to display",
+        "name": "movies",
+        "type": "list",
+        "itemname": "Movie",
+        "items": [{
+            "title": "Name pattern (supports *)",
+            "ui_width": 5,
+            "name": "pattern",
+            "type": "string",
+            "default": ""
+        }, {
+            "title": "Assets to display in a rotation",
+            "name": "assets",
+            "type": "list",
+            "itemname": "Asset",
+            "items": [{
+                "title": "Image / Video",
+                "ui_width": 6,
+                "name": "media",
+                "type": "resource",
+                "valid": ["image", "video"],
+                "default": "empty.png"
+            }, {
+                "title": "Display time (ignored for videos)",
+                "ui_width": 6,
+                "name": "duration",
+                "type": "select",
+                "options": [
+                    [5, "5 Seconds"],
+                    [10, "10 Seconds"],
+                    [15, "15 Seconds"],
+                    [20, "20 Seconds"]
+                ],
+                "default": 10
+            }]
+        }]
+    },
+
+    {
+        "title": "Player settings",
+        "type": "section"
+    }, {
+        "title": "FTP password",
+        "ui_width": 4,
+        "name": "ftp_password",
+        "type": "string",
+        "ui_type": "password",
+        "default": "change-me"
+    }, {
+        "title": "Corner Logo",
+        "ui_width": 4,
+        "name": "corner_logo",
+        "type": "resource",
+        "valid": ["image"],
+        "hint": "Best use transparent 55x55 PNG image",
+        "default": "logo.png"
+    }, {
+        "title": "Logo",
+        "ui_width": 4,
+        "name": "main_logo",
+        "type": "resource",
+        "valid": ["image"],
+        "default": "big-logo.png"
+    }]
+}

@@ -1,0 +1,9 @@
+{
+    "name": "BLOAD.txt Auditorium",
+    "author": "Florian Wesch <fw@info-beamer.com>",
+    "desc": "Handles a single screen and shows information based on a BLOAD.txt file.",
+    "runtime": {
+        "antialias": true
+    },
+    "platforms": ["pi/epoch-1", "pi/epoch-2"]
+}
