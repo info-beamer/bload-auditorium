@@ -1,0 +1,1 @@
+* Only use Python to parse BLOAD.txt and forward relevant infos to Lua using single JSON file
