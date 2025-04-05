@@ -57,7 +57,8 @@
         "name": "ftp_password",
         "type": "string",
         "ui_type": "password",
-        "default": "change-me"
+        "hint": "If no password is set, the FTP server is inactive",
+        "default": ""
     }, {
         "title": "Corner Logo",
         "ui_width": 4,
