@@ -2,7 +2,7 @@
     "name": "BLOAD.txt Auditorium",
     "author": "Florian Wesch <fw@info-beamer.com>",
     "desc": "Handles a single screen and shows information based on a BLOAD.txt file.",
-    "repository": "https://github.com/info-beamer/bload-auditorium",
+    "repository": "https://github.com/info-beamer/package-bload-auditorium",
     "version": "public-1",
     "offline": {
         "support": "no",
